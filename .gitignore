@@ -1,0 +1,8 @@
+# Reference files (not for deployment)
+_reference/
+
+# OS
+.DS_Store
+
+# Editor
+.vscode/
