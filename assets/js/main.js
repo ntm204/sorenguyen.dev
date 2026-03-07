@@ -289,6 +289,32 @@ function updateViewportVars() {
 }
 
 // ============================================================
+// Alpine.js Components
+// ============================================================
+
+/**
+ * Handles email copying with temporary visual feedback.
+ * @returns {Object} Alpine.js data object.
+ */
+function copyEmailComponent() {
+  return {
+    copied: false,
+    email: "ntm.codes@gmail.com",
+    _timeout: null,
+    copy() {
+      if (this._timeout) clearTimeout(this._timeout);
+      navigator.clipboard.writeText(this.email).then(() => {
+        this.copied = true;
+        this._timeout = setTimeout(() => {
+          this.copied = false;
+          this._timeout = null;
+        }, 2000);
+      });
+    },
+  };
+}
+
+// ============================================================
 // Main initialization
 // ============================================================
 
